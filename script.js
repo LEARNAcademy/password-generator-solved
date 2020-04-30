@@ -89,9 +89,9 @@ var specialCharacters = [
   ];
   
   // Function to prompt user for password options
-  function getPasswordOptions() {
+  const getPasswordOptions = () => {
     // Variable to store length of password from user input
-    var length = parseInt(
+    let length = parseInt(
       prompt('How many characters would you like your password to contain?')
     );
   
@@ -114,22 +114,22 @@ var specialCharacters = [
     }
   
     // Variable to store boolean regarding the inclusion of special characters
-    var hasSpecialCharacters = confirm(
+    let hasSpecialCharacters = confirm(
       'Click OK to confirm including special characters.'
     );
   
     // Variable to store boolean regarding the inclusion of numeric characters
-    var hasNumericCharacters = confirm(
+    let hasNumericCharacters = confirm(
       'Click OK to confirm including numeric characters.'
     );
   
     // Variable to store boolean regarding the inclusion of lowercase characters
-    var hasLowerCasedCharacters = confirm(
+    let hasLowerCasedCharacters = confirm(
       'Click OK to confirm including lowercase characters.'
     );
   
     // Variable to store boolean regarding the inclusion of uppercase characters
-    var hasUpperCasedCharacters = confirm(
+    let hasUpperCasedCharacters = confirm(
       'Click OK to confirm including uppercase characters.'
     );
   
@@ -145,7 +145,7 @@ var specialCharacters = [
     }
   
     // Object to store user input
-    var passwordOptions = {
+    let passwordOptions = {
       length: length,
       hasSpecialCharacters: hasSpecialCharacters,
       hasNumericCharacters: hasNumericCharacters,
@@ -157,24 +157,24 @@ var specialCharacters = [
   }
   
   // Function for getting a random element from an array
-  function getRandom(arr) {
-    var randIndex = Math.floor(Math.random() * arr.length);
-    var randElement = arr[randIndex];
+  const getRandom = (arr) => {
+    let randIndex = Math.floor(Math.random() * arr.length);
+    let randElement = arr[randIndex];
   
     return randElement;
   }
   
   // Function to generate password with user input
-  function generatePassword() {
-    var options = getPasswordOptions();
+  const generatePassword = () => {
+    let options = getPasswordOptions();
     // Variable to store password as it's being concatenated
-    var result = [];
+    let result = [];
   
     // Array to store types of characters to include in password
-    var possibleCharacters = [];
+    let possibleCharacters = [];
   
     // Array to contain one of each type of chosen character to ensure each will be used
-    var guaranteedCharacters = [];
+    let guaranteedCharacters = [];
   
     // Conditional statement that adds array of special characters into array of possible characters based on user input
     // Push new random special character to guaranteedCharacters
@@ -205,14 +205,14 @@ var specialCharacters = [
     }
   
     // For loop to iterate over the password length from the options object, selecting random indices from the array of possible characters and concatenating those characters into the result variable
-    for (var i = 0; i < options.length; i++) {
-      var possibleCharacter = getRandom(possibleCharacters);
+    for (let i = 0; i < options.length; i++) {
+      let possibleCharacter = getRandom(possibleCharacters);
   
       result.push(possibleCharacter);
     }
   
     // Mix in at least one of each guaranteed character in the result
-    for (var i = 0; i < guaranteedCharacters.length; i++) {
+    for (let i = 0; i < guaranteedCharacters.length; i++) {
       result[i] = guaranteedCharacters[i];
     }
   
@@ -221,12 +221,12 @@ var specialCharacters = [
   }
   
   // Get references to the #generate element
-  var generateBtn = document.querySelector('#generate');
+  let generateBtn = document.querySelector('#generate');
   
   // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector('#password');
+  const writePassword = () => {
+    let password = generatePassword();
+    let passwordText = document.querySelector('#password');
   
     passwordText.value = password;
   }
